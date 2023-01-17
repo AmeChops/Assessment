@@ -8,4 +8,4 @@ const overtimeSchema = new Schema(
   },
 );
 
-module.exports = mongoose.model("Overtime", overtimeSchema);
+module.exports = mongoose.model("overtime", overtimeSchema);

@@ -21,4 +21,4 @@ const overtimeClaimSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("OvertimeClaim", tastingSchema);
+module.exports = mongoose.model("overtimeClaims", overtimeClaimSchema);

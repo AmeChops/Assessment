@@ -21,4 +21,4 @@ employeeSchema.pre('save', async function (next) {
     }
 })
 
-module.exports = mongoose.model("User", employeeSchema);
+module.exports = mongoose.model("employee", employeeSchema);

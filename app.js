@@ -52,16 +52,16 @@ app.use(expressSession({ secret: 'foo barr', cookie: { expires: new Date(2534023
 
 
 app.use("*", async (req, res, next) => {
-  global.user = false;
-  if (req.session.userID && !global.user) {
-    const user = await User.findById(req.session.userID);
-    global.user = user;
+  global.employee = false;
+  if (req.session.employeeID && !global.employee) {
+    const employee = await Employee.findById(req.session.employeeID);
+    global.employee = employee;
   }
   next();
 })
 
 const authMiddleware = async (req, res, next) => {
-  const user = await User.findById(req.session.userID);
+  const employee = await Employee.findById(req.session.employeeID);
   if (!user) {
     return res.redirect('/');
   }
@@ -76,37 +76,32 @@ app.get("/logout", async (req, res) => {
   res.redirect('/');
 })
 
-app.get("/create-taster", authMiddleware, (req, res) => {
-  res.render("create-taster", { errors: {} });
+app.get("/create-employee", authMiddleware, (req, res) => {
+  res.render("create-employee", { errors: {} });
 });
 
-app.post("/create-taster", tasterController.create);
-
-app.get("/tasters", tasterController.list);
-app.get("/tasters/delete/:id", tasterController.delete);
-app.get("/tasters/update/:id", tasterController.edit);
-app.post("/tasters/update/:id", tasterController.update);
-
-
-app.get("/create-tasting", tastingController.createView);
-app.post("/create-tasting", tastingController.create);
-app.get("/update-tasting/:id", tastingController.edit);
-
-
-app.get("/tastings", tastingController.list);
-app.get("/tastings/delete/:id", tastingController.delete);
-
-app.get("/join", (req, res) => {
-  res.render('create-user', { errors: {} })
-});
-
-app.post("/join", userController.create);
+app.post("/create-employee", employeeController.create);
 app.get("/login", (req, res) => {
-  res.render('login-user', { errors: {} })
-});
-app.post("/login", userController.login);
+    res.render('loginEmployee', { errors: {} })
+  });
+  app.post("/login", employeeController.login);
 
-app.get('/search-tastings', (req,res)=> res.render('search-tastings'));
+app.get("/employees", employeeController.list);
+app.get("/employees/delete/:id", employeeController.delete);
+app.get("/employees/update/:id", employeeController.edit);
+app.post("/employees/update/:id", employeeController.update);
+
+
+app.get("/create-overtimeClaim", overtimeClaimController.createView);
+app.post("/create-overtimeClaim", overtimeClaimController.create);
+app.get("/update-overtimeClaim/:id", overtimeClaimController.edit);
+
+
+app.get("/overtimeClaims", overtimeClaimController.list);
+app.get("/overtimeClaims/delete/:id", overtimeClaimController.delete);
+
+
+app.get('/search-overtimeClaim', (req,res)=> res.render('search-overtimeClaims'));
 
 
 app.listen(PORT, () => {
