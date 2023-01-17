@@ -27,7 +27,7 @@ The database consists of 3 tables; Employee, Overtime and Overtime Claims.
 
 Please see the below entity relationship diagram which shows hows the tables link together.
 
-![](2023-01-16-13-11-14.png)
+![](2023-01-17-09-41-04.png)
 
 ## Security and Scalability
 
