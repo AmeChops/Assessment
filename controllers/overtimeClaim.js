@@ -31,13 +31,13 @@ exports.list = async (req, res) => {
 exports.edit = async (req, res) => {
   const id = req.params.id;
   try {
-    const employees = await Employee.find({});
+    const employee = await Employee.find({});
     const overtimeClaim = await OvertimeClaim.findById(id);
     if (!overtimeClaim) throw Error('cant find overtime claim');
     res.render('update-overtimeClaim', {
       overtime: overtime,
       hours: hours,
-      employees: employees,
+      employee: employee,
       errors: {}
     });
   } catch (e) {
@@ -78,10 +78,10 @@ exports.create = async (req, res) => {
 exports.createView = async (req, res) => {
   try {
     const overtime = await Overtime.find({});
-    const employees = await Employee.find({});
+    const employee = await Employee.find({});
     res.render("create-overtimeClaim", {
       overtime: overtime,
-      employees: employees,
+      employee: employee,
       errors: {}
     });
 

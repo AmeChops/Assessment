@@ -1,27 +1,25 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/"> Hampshire & Isle of Wight Fire and Rescue Service </a>
+      <img src="logo.PNG" alt="HIWFRS Logo">
+      <!--<a class="navbar-brand" href="/" text-align: center> Hampshire & Isle of Wight Fire and Rescue Service</a>-->
       <div class="navbar">
         <div class="navbar-nav">
           <a class="nav-link active" href="/">
             Home <span class="sr-only">(current)</span>
           </a>
-          <a class="nav-link" href="tasters"> Tasters</a>
-          <a class="nav-link" href="tastings"> Tastings</a>
-          <a class="nav-link" href="search-tastings"> Search Tastings</a>
+          <a class="nav-link" href="Employee"> Employees</a>
+          <a class="nav-link" href="overtimeClaim"> Overtime Claims</a>
+          <a class="nav-link" href="search-overtimeClaims"> Search Overtime Claims</a>
         
           <% if(employee) { %>
           <a class="nav-link" href="saved-tastings"> Search Tastings</a>
           <a class="nav-link" href="create-tasting"> Write a Review </a>
-          <a class="nav-link" href="logout"> <%= employee.payrollNumber %> (Logout) </a> <%
+          <a class="nav-link" href="/logout"> <%= employees.payrollNumber %> (Logout) </a> <%
           }%> <% if(!employee) { %>
-          <a class="nav-link" href="login"> Login </a>
-          <a class="nav-link" href="join"> Sign Up </a>
+          <a class="nav-link" href="/login"> Login </a>
+          <a class="nav-link" href="/join"> Sign Up </a>
           <% } %>
         </div>
-        <p class="float-right">
-        <img src="..public/logo.png" alt="HIWFRS Logo">
-        </p>
       </div>
     </nav>
   </header>

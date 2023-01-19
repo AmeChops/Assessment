@@ -6,11 +6,6 @@ const chalk = require("chalk");
 const bodyParser = require("body-parser");
 const expressSession = require("express-session");
 const Employee = require("./models/Employee");
-
-
-/**
- * Controllers (route handlers).
- */
 const employeeController = require("./controllers/employee");
 const overtimeClaimController = require("./controllers/overtimeClaim");
 const homeController = require("./controllers/home");
@@ -18,17 +13,8 @@ const homeController = require("./controllers/home");
 const app = express();
 app.set("view engine", "ejs");
 
-/**
- * notice above we are using dotenv. We can now pull the values from our environment
- */
 
 const { PORT, MONGODB_URI } = process.env;
-
-/**
- * connect to database
- */
-
-
 
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
@@ -41,9 +27,7 @@ mongoose.connection.on("error", (err) => {
   process.exit();
 });
 
-/***
- * We are applying our middlewear
- */
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -62,7 +46,7 @@ app.use("*", async (req, res, next) => {
 
 const authMiddleware = async (req, res, next) => {
   const employee = await Employee.findById(req.session.employeeID);
-  if (!user) {
+  if (!employee) {
     return res.redirect('/');
   }
   next()
@@ -72,24 +56,29 @@ app.get("/", homeController.list);
 
 app.get("/logout", async (req, res) => {
   req.session.destroy();
-  global.user = false;
+  global.employee = false;
   res.redirect('/');
-})
-
-app.get("/create-employee", authMiddleware, (req, res) => {
-  res.render("create-employee", { errors: {} });
 });
 
-app.post("/create-employee", employeeController.create);
+app.get("/join", (req, res ) => {
+  res.render('createEmployee', {errors: {} })
+});
+app.post("/join", employeeController.create);
 app.get("/login", (req, res) => {
-    res.render('loginEmployee', { errors: {} })
-  });
-  app.post("/login", employeeController.login);
+  res.render('loginEmployee', { errors: {} })
+});
 
-app.get("/employees", employeeController.list);
-app.get("/employees/delete/:id", employeeController.delete);
-app.get("/employees/update/:id", employeeController.edit);
-app.post("/employees/update/:id", employeeController.update);
+app.get("/login", (req, res) => {
+app.post("/login", employeeController.login);
+    res.render('loginEmployee', { errors: {} })
+});
+
+app.post("/login", employeeController.login);
+
+app.get("/employee", employeeController.list);
+app.get("/employee/delete/:id", employeeController.delete);
+app.get("/employee/list/:id", employeeController.edit);
+app.post("/employee/update/:id", employeeController.update);
 
 
 app.get("/create-overtimeClaim", overtimeClaimController.createView);

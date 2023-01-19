@@ -34,17 +34,17 @@
           <div class="col-">
             <form method="POST" action="/login">
               <div class="form-group">
-                <label for="name">Email</label>
+                <label for="name">Payroll Number</label>
                 <input
-                  type="email"
+                  type="payrollNumber"
                   class="form-control"
                   id="payrollNumber"
                   name="payrollNumber"
                   placeholder="Enter Payroll Number"
                 />
 
-                <% if (errors['email']) { %>
-                <p style="color: red"><%= errors['email'].message %></p>
+                <% if (errors['payrollNumber']) { %>
+                <p style="color: red"><%= errors['payrollNumber'].message %></p>
                 <% } %>
               </div>
               <div class="form-group">
