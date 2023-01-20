@@ -7,13 +7,12 @@
           <a class="nav-link active" href="/">
             Home <span class="sr-only">(current)</span>
           </a>
-          <a class="nav-link" href="Employee"> Employees</a>
-          <a class="nav-link" href="overtimeClaim"> Overtime Claims</a>
-          <a class="nav-link" href="search-overtimeClaims"> Search Overtime Claims</a>
+          <a class="nav-link" href="/employee"> Employees</a>
+          <a class="nav-link" href="/overtimeCode"> Overtime Codes</a>
+          <a class="nav-link" href="/searchOvertime"> Search Overtime Claims</a>
         
           <% if(employee) { %>
-          <a class="nav-link" href="saved-tastings"> Search Tastings</a>
-          <a class="nav-link" href="create-tasting"> Write a Review </a>
+          <a class="nav-link" href="/createClaim"> Creat Overtime Claim </a>
           <a class="nav-link" href="/logout"> <%= employees.payrollNumber %> (Logout) </a> <%
           }%> <% if(!employee) { %>
           <a class="nav-link" href="/login"> Login </a>

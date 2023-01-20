@@ -73,7 +73,7 @@ exports.list = async (req, res) => {
     const id = req.params.id;
     try {
       const employee = await Employee.findById(id);
-      res.render('update-employee', { employee: employee, id: id });
+      res.render('updateEmployee', { employee: employee, id: id });
     } catch (e) {
       res.status(404).send({
         message: `couldn't find employee ${id}.`,

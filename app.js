@@ -68,12 +68,10 @@ app.get("/login", (req, res) => {
   res.render('loginEmployee', { errors: {} })
 });
 
-app.get("/login", (req, res) => {
 app.post("/login", employeeController.login);
+app.get("/login", (req, res) => {
     res.render('loginEmployee', { errors: {} })
 });
-
-app.post("/login", employeeController.login);
 
 app.get("/employee", employeeController.list);
 app.get("/employee/delete/:id", employeeController.delete);
@@ -81,16 +79,16 @@ app.get("/employee/list/:id", employeeController.edit);
 app.post("/employee/update/:id", employeeController.update);
 
 
-app.get("/create-overtimeClaim", overtimeClaimController.createView);
-app.post("/create-overtimeClaim", overtimeClaimController.create);
-app.get("/update-overtimeClaim/:id", overtimeClaimController.edit);
+app.get("/createOvertimeClaim", overtimeClaimController.createView);
+app.post("/createOvertimeClaim", overtimeClaimController.create);
+app.get("/updateOvertimeClaim/:id", overtimeClaimController.edit);
 
 
 app.get("/overtimeClaims", overtimeClaimController.list);
 app.get("/overtimeClaims/delete/:id", overtimeClaimController.delete);
 
 
-app.get('/search-overtimeClaim', (req,res)=> res.render('search-overtimeClaims'));
+app.get("/searchOvertime", (req, res) => res.render('searchOvertime'));
 
 
 app.listen(PORT, () => {
