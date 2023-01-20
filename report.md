@@ -13,7 +13,7 @@ Password:
 https://pear-vast-cheetah.cyclic.app
 
 <u>Git Repository:</u>  
-https://github.com/AmeChops/COM519.git<p>
+https://github.com/AmeChops/Assessment.git<p>
 
 ## Introduction
 
