@@ -1,9 +1,16 @@
 # COM519 - Advanced Databases
 
-<u>Hosted Application: </u> <p>
-<u>Git Repository: </u>https://github.com/AmeChops/COM519.git<p>
-</u>User Name: </u> 1800100 <p>
-</u>Password: </u> greenbanana <p>
+<u>Database:</u>  
+https://account.mongodb.com/account/login <p>
+
+Email Address:  5duddl71@solent.ac.uk  
+Password:  1GreenBanana!  
+
+<u>Web Address:</u>  
+http://127.0.0.1:2020/
+
+<u>Git Repository:</u>  
+https://github.com/AmeChops/COM519.git<p>
 
 ## Introduction
 
@@ -11,11 +18,12 @@ Within Hampshire & Isle of Wight Fire and Rescue Service there is currently no a
 
 ## System Overview
 
-Employees will login with their user name, this will be their Payroll Number.  For the purpose of this application I have pre-loaded three employee records in to the database. 
+I have used a Mongo Atlas database to hold the information.
 
-The system will allow employees to create overtime claims, view previous claims, update previous claims and delete previous claims.  For the purpose of this application I have pre-loaded three types of overtime codes in to the database.
+Employees will login with their user name, this will be their Payroll Number.  The progress that I have made on the system is that you are able to add a new user.  For the purpose of this application I have pre-loaded three types of overtime codes in to the database as shown here:
 
-## Key Design Decisions
+![](2023-01-20-10-54-20.png)
+
 
 ## Database Design
 
@@ -31,6 +39,20 @@ Please see the below entity relationship diagram which shows hows the tables lin
 
 ## Security and Scalability
 
+By hashing the passwords I have created a level of security which will make the system less open to hacking.  As it it hosted in a cloud environment scalability is an option to allow for storing more data.
+
+If I were to implement this within my workplace I would have chosen to store the data within an SQL database and the whole application would be sat on internal servers an protected by the organisitions firewall and security settings.
+
 ## Conclusion
 
-Ideally I would have added an option for when a amnager logs in they are able to view their employees overtime claims.  This would have need an additional table, or line in employee table, to show the managers payroll number.
+I have been able to succesfully connect the application to the database and implement the creation of a new employee.  Unfortunately I have not been able to make much more progress.
+
+I had no prior knowledge of CSS, JavaScript or Node.JS and little exposure to HTML.  I have found this module very interesting though and look forward to continuing my learning of these languages.
+
+Ideally I would have liked to produce a full application whereby employees would be able to:
+- create an account - with more details such as name and department
+- create new overtime claims
+- view, update and delete previous claims
+- log in and out successfully
+
+and also provide a much slicker and neater front end.
